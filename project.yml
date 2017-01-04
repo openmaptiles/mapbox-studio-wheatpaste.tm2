@@ -19,9 +19,8 @@ layers: null
 maxzoom: 22
 minzoom: 0
 name: Wheatpaste
-source: "mapbox:///mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v6"
-styles: 
+source: "http://openmaptiles.org/cdn.json"
+styles:
   - style.mss
-  - terrain.mss
   - label.mss
 template: ''
