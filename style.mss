@@ -6,7 +6,7 @@
 @sans_black_italic: "Roboto Black Italic","Arial Unicode MS Regular";
 
 // Languages: name (local), name_en, name_fr, name_es, name_de
-@name: '[name]';
+@name: '[name_en]';
 
 // Common Colors //
 @water: #2df * .6;
@@ -58,15 +58,11 @@ Map {
 
 
 // --- roads ------------------------------------
-
-#tunnel { opacity:.25; }
-
-#road::case,
-#bridge::case,
-#tunnel::case {
+#transportation::case {
   line-color: @land;
   line-width:0;
   line-join: round;
+  [brunnel='tunnel'] { opacity:.25; }
   [class='motorway'] {
     line-width: 7;
     [zoom=14] { line-width: 8; }
@@ -75,19 +71,17 @@ Map {
     [zoom=17] { line-width: 12; }
     [zoom=18] { line-width: 14; }
   }
-  [class='main'][zoom>6] {
+  [class=~'trunk|primary|secondary|tertiary'][zoom>6] {
     line-width: 0;
     [zoom>8] { line-width: 6; }
     [zoom>16] { line-width: 7; }
   }
-  [zoom>13][class='street'] {
+  [zoom>13][class=~'minor|service'] {
     line-width: 4; 
   }
 }
 
-#road::fill,
-#bridge::fill,
-#tunnel::fill {
+#transportation::fill {
   line-color: #000;
   line-width:0;
   line-join:bevel;
@@ -100,11 +94,11 @@ Map {
     [zoom=17] { line-width: 8; }
     [zoom=18] { line-width: 10; }
   }
-  [class='main'][zoom>6] {
+  [class=~'trunk|primary|secondary|tertiary'][zoom>6] {
     line-width: 2;
     [zoom>16] { line-width: 3; }
   }
-  [class='street'] {
+  [class=~'minor|service'] {
     [zoom=12] { line-width: .1; }
     [zoom=13] { line-width: .2; }
     [zoom=14] { line-width: .3; }

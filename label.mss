@@ -1,7 +1,7 @@
 
 // --- admin labels ------------------------------
 
-#country_label {
+#place[class='country'] {
   text-name: @name;
   text-face-name: @serif_bold;
   text-fill: #000;
@@ -26,7 +26,7 @@
 }
 
 // --- places ------------------------------------
-#place_label[type='city'][localrank<=2]{
+#place[class='city']{
   text-name: @name;
   text-face-name: @sans_bold;
   text-halo-fill: @land;
@@ -34,7 +34,7 @@
   text-halo-rasterizer: fast;
   text-size: 20;
   text-transform:lowercase;
-  [scalerank<=2] {
+  [rank<=2] {
     text-size: 24;
     text-face-name: @sans_black_italic;
     [zoom>=6] { text-orientation: 8; }
@@ -42,7 +42,7 @@
     [zoom>=10]  { text-size: 32; }
     [zoom>=14]  { text-size: 36; }
   }
-  [scalerank=3] {
+  [rank=3] {
     [zoom>=8] {
       text-size: 22;
       text-orientation: 8;
@@ -51,15 +51,15 @@
     [zoom>=10]  { text-size: 24; }
     [zoom>=14]  { text-size: 26; }
   }
-  [scalerank>=4][zoom>10] {
+  [rank>=4][zoom>10] {
     text-size: 20;
     text-orientation: 6;
     text-face-name: @sans_bold_italic;
   }
 }
 
-#place_label[type='town'][localrank<=1][zoom>8],
-#place_label[type='town'][localrank<=3][zoom>=11] {
+#place[class='town'][rank<=1][zoom>8],
+#place[class='town'][rank<=3][zoom>=11] {
   text-name: @name;
   text-face-name: @sans_black_italic;
   text-halo-fill: @land;
@@ -73,10 +73,10 @@
   [zoom>=14] { text-size: 24; }
   }
 
-#place_label[zoom>=11][type='hamlet'],
-#place_label[zoom>=12][type='suburb'],
-#place_label[zoom>=13][type='neighbourhood'],
-#place_label[zoom>=13][type='village'] {
+#place[zoom>=11][class='hamlet'],
+#place[zoom>=12][class='suburb'],
+#place[zoom>=13][class='neighbourhood'],
+#place[zoom>=13][class='village'] {
   text-name: @name;
   text-face-name: @sans_bold;
   text-halo-fill: @land;
@@ -94,15 +94,9 @@
 }
 
 // --- pois ------------------------------------
-#poi_label[scalerank=1][zoom>=14],
-#poi_label[scalerank=2][zoom>=16],
-#poi_label[scalerank=3][zoom>=17] {
-  [type='Aerodrome']{
-    text-name: "'[ ' + [ref] + ' ]'";
-    text-face-name: @sans_bold;
-    text-size: 20;
-    text-transform:uppercase;
-  }
+#poi[rank=1][zoom>=14],
+#poi[rank=2][zoom>=16],
+#poi[rank=3][zoom>=17] {
   // --- dots ---------
   marker-width: 8;
   marker-fill: #000;
